@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: regionalmap
+spec:
+  containers:
+  - name: regionalmap
+    image: regionalmap
