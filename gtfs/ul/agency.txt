@@ -1,0 +1,3 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang
+33010000000001407,"Kollektivtrafikförvaltningen, UL",https://www.resrobot.se/,Europe/Stockholm,sv
+33010000000547186,Storstockholms Lokaltrafik AB,https://www.resrobot.se/,Europe/Stockholm,sv
