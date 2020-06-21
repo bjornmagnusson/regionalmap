@@ -107,6 +107,7 @@ func main() {
 	fmt.Printf("Loaded %d GTFS datasets\n", len(gs))
 
 	loadedGtfs := gs[0]
+	fmt.Println("Loading GTFS data for " + loadedGtfs.Agency.Name)
 	gtfsRoutes = loadedGtfs.Routes
 	gtfsStops = loadedGtfs.Stops
 	gtfsStoptimes = loadedGtfs.StopsTimes
