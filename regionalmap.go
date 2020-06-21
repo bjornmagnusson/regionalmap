@@ -96,7 +96,7 @@ func getTripsForRoute(routeID string) []trip {
 	return tripsForRoute
 }
 
-func main() {
+func loadGTFSdata() {
 	fmt.Println("Loading GTFS data")
 	gs, err := gtfs.LoadSplitted("gtfs", nil)
 	if err != nil {
@@ -120,6 +120,9 @@ func main() {
 		tripsForRoute := getTripsForRoute(routed.ID)
 		routes = append(routes, route{routed.ID, routed.ShortName, tripsForRoute})
 	}
+}
 
+func main() {
+	loadGTFSdata()
 	initWebServer()
 }
