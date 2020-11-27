@@ -68,9 +68,18 @@ type info struct {
 	Version string `json:"version"`
 }
 
+type ping struct {
+	Status string `json:"status"`
+}
+
 func getApplicationInfo(w http.ResponseWriter, r *http.Request) {
 	info := info{"regionalmap", "0.1.0"}
 	writeJson(w, info)
+}
+
+func health(w http.ResponseWriter, r *http.Request) {
+	status := ping{"UP"}
+	writeJson(w, status)
 }
 
 func initWebServer() {
@@ -81,6 +90,7 @@ func initWebServer() {
 	mux.HandleFunc("/v1/transfers", getTransfers)
 	mux.HandleFunc("/v1/trips", getTrips)
 	mux.HandleFunc("/info", getApplicationInfo)
+	mux.HandleFunc("/", health)
 	handler := cors.Default().Handler(mux)
 	http.ListenAndServe(":8080", handler)
 }
@@ -123,6 +133,6 @@ func loadGTFSdata() {
 }
 
 func main() {
-	loadGTFSdata()
+	go loadGTFSdata()
 	initWebServer()
 }
